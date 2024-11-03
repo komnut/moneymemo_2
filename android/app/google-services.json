@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "656378444249",
+    "project_id": "moneymemo-b6770",
+    "storage_bucket": "moneymemo-b6770.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656378444249:android:fa1c691fde432b35de01c8",
+        "android_client_info": {
+          "package_name": "com.example.moneymemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_qwY-HtEIE7VJ9VDQs7NdS79Aff92xdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656378444249:android:b0d120cec88071eede01c8",
+        "android_client_info": {
+          "package_name": "com.example.moneymemo_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_qwY-HtEIE7VJ9VDQs7NdS79Aff92xdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656378444249:android:4e373d3c3c731d86de01c8",
+        "android_client_info": {
+          "package_name": "com.flutterflow.finwallet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_qwY-HtEIE7VJ9VDQs7NdS79Aff92xdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
