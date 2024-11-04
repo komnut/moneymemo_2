@@ -21,6 +21,7 @@ class Asset {
   final String id; // เพิ่มฟิลด์ id
   final String assetName;
   final double assetAmount;
+  final String assetType;
   final String? expiredDate;
   final DateTime? createdDate;
   final DateTime? updatedDate;
@@ -29,6 +30,7 @@ class Asset {
     required this.id, // รับค่า id ใน constructor
     required this.assetName,
     required this.assetAmount,
+    required this.assetType,
     this.expiredDate,
     required this.createdDate,
     required this.updatedDate,
@@ -40,6 +42,7 @@ class Asset {
       id: id, // ตั้งค่า id จาก Firestore
       assetName: data['assetName'] ?? '',
       assetAmount: (data['assetAmount'] ?? 0).toDouble(),
+      assetType: data['assetType'] ?? '',
       expiredDate: data['expiredDate'] ?? '',
       createdDate: (data['createdDate'] as Timestamp).toDate(),
       updatedDate: (data['updatedDate'] as Timestamp).toDate(),
