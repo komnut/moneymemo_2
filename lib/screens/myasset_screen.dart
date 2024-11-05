@@ -45,24 +45,24 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
           size: 32,
         ),
       ),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-          child: Text(
-            'My Assets',
-            style: GoogleFonts.readexPro(
-              textStyle: const TextStyle(
-                fontSize: 40,
-                color: Colors.black,
-                letterSpacing: 0.0,
-              ),
-            ),
-          ),
-        ),
-        centerTitle: false,
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   title: Padding(
+      //     padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+      //     child: Text(
+      //       'My Assets',
+      //       style: GoogleFonts.readexPro(
+      //         textStyle: const TextStyle(
+      //           fontSize: 40,
+      //           color: Colors.black,
+      //           letterSpacing: 0.0,
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      //   centerTitle: false,
+      //   elevation: 0,
+      // ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -105,108 +105,117 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
                 child: Column(
                   children: [
                     // กล่องสำหรับ Asset
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(13, 0, 0, 0),
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.44,
-                            height: 140,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .tertiary, // ใช้สีเดิมสำหรับ Asset
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 4,
-                                  color: Color(0x3F14181B),
-                                  offset: Offset(0, 3),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Asset",
-                                    style: GoogleFonts.inter(
-                                      textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        letterSpacing: 0.0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    formattedTotalAssetAmount, // แสดงผลรวม Asset
-                                    style: GoogleFonts.readexPro(
-                                      textStyle: const TextStyle(
-                                        fontSize: 30,
-                                        letterSpacing: 0.0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0, MediaQuery.sizeOf(context).height * 0.1, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(13, 0, 0, 5),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.44,
+                              height: 120,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .tertiary, // ใช้สีเดิมสำหรับ Asset
+                                boxShadow: const [
+                                  BoxShadow(
+                                    blurRadius: 4,
+                                    color: Color(0x3F14181B),
+                                    offset: Offset(0, 3),
+                                  )
                                 ],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(12),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Asset",
+                                      style: GoogleFonts.inter(
+                                        textStyle: const TextStyle(
+                                          fontSize: 30,
+                                          letterSpacing: 0.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      formattedTotalAssetAmount, // แสดงผลรวม Asset
+                                      style: GoogleFonts.readexPro(
+                                        textStyle: const TextStyle(
+                                          fontSize: 25,
+                                          letterSpacing: 0.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        // กล่องสำหรับ Debt
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.44,
-                            height: 140,
-                            decoration: BoxDecoration(
-                              color:
-                                  Colors.redAccent, // ใช้สี warning สำหรับ Debt
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 4,
-                                  color: Color(0x3F14181B),
-                                  offset: Offset(0, 3),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Debt",
-                                    style: GoogleFonts.inter(
-                                      textStyle: const TextStyle(
-                                        fontSize: 20,
-                                        letterSpacing: 0.0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    formattedTotalDebtAmount, // แสดงผลรวม Debt
-                                    style: GoogleFonts.readexPro(
-                                      textStyle: const TextStyle(
-                                        fontSize: 30,
-                                        letterSpacing: 0.0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
+                          // กล่องสำหรับ Debt
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 16, 5),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.44,
+                              height: 120,
+                              decoration: BoxDecoration(
+                                color: Colors
+                                    .redAccent, // ใช้สี warning สำหรับ Debt
+                                boxShadow: const [
+                                  BoxShadow(
+                                    blurRadius: 4,
+                                    color: Color(0x3F14181B),
+                                    offset: Offset(0, 3),
+                                  )
                                 ],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(12),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          "Debt",
+                                          style: GoogleFonts.inter(
+                                            textStyle: const TextStyle(
+                                              fontSize: 30,
+                                              letterSpacing: 0.0,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      formattedTotalDebtAmount, // แสดงผลรวม Debt
+                                      style: GoogleFonts.readexPro(
+                                        textStyle: const TextStyle(
+                                          fontSize: 25,
+                                          letterSpacing: 0.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     // แสดงรายการสินทรัพย์
                     Expanded(
@@ -228,9 +237,13 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .tertiaryContainer,
+                                  color: asset.assetType == 'asset'
+                                      ? Theme.of(context)
+                                          .colorScheme
+                                          .tertiaryContainer
+                                      : Theme.of(context)
+                                          .colorScheme
+                                          .errorContainer,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: Padding(
@@ -256,8 +269,8 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
                                         ],
                                       ),
                                       TextReadexpro(
-                                        title:
-                                            "\$${asset.assetAmount.toStringAsFixed(2)}",
+                                        title: NumberFormat("#,##0.00")
+                                            .format(asset.assetAmount),
                                         textSize: 15,
                                         hexcolor: "#000000",
                                       ),
