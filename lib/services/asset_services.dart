@@ -48,4 +48,18 @@ class Asset {
       updatedDate: (data['updatedDate'] as Timestamp).toDate(),
     );
   }
+
+  // แปลง Asset เป็นข้อมูลสำหรับ Firestore
+  Map<String, dynamic> toFirestore() {
+    return {
+      'assetName': assetName,
+      'assetAmount': assetAmount,
+      'assetType': assetType,
+      'expiredDate': expiredDate,
+      'createdDate':
+          createdDate != null ? Timestamp.fromDate(createdDate!) : null,
+      'updatedDate':
+          updatedDate != null ? Timestamp.fromDate(updatedDate!) : null,
+    };
+  }
 }

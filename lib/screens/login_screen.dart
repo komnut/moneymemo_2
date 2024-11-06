@@ -73,129 +73,134 @@ class _LoginscreenState extends State<Loginscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width,
-                height: MediaQuery.sizeOf(context).height * 1,
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(24, 24, 0, 20),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [logoImage()],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width,
+                  height: MediaQuery.sizeOf(context).height * 1,
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        const Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(24, 24, 0, 20),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [logoImage()],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
-                        child: SingleChildScrollView(
-                          child: Form(
-                            key: _formKey,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                const Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    TextReadexpro(
-                                      title: "Welcome back",
-                                      textSize: 30,
-                                      hexcolor: "#000000",
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0, 5, 0, 0),
-                                  child: Row(
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              24, 0, 24, 0),
+                          child: SingleChildScrollView(
+                            child: Form(
+                              key: _formKey,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  const Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Text(
-                                        'Login to access your account below.',
-                                        style: GoogleFonts.inter(
-                                          textStyle: TextStyle(
-                                            fontSize: 18,
-                                            color: HexColor("#57636C"),
-                                            letterSpacing: 0.0,
-                                          ),
-                                        ),
+                                      TextReadexpro(
+                                        title: "Welcome back",
+                                        textSize: 30,
+                                        hexcolor: "#000000",
                                       ),
                                     ],
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: CustomTextFormField(
-                                    hintText: "Enter your email..",
-                                    labelText: "Email Address*",
-                                    controller: emailController,
+                                  Padding(
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 5, 0, 0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          'Login to access your account below.',
+                                          style: GoogleFonts.inter(
+                                            textStyle: TextStyle(
+                                              fontSize: 18,
+                                              color: HexColor("#57636C"),
+                                              letterSpacing: 0.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 20, 0, 0),
+                                    child: CustomTextFormField(
+                                      hintText: "Enter your email..",
+                                      labelText: "Email Address*",
+                                      controller: emailController,
+                                      validator: MultiValidator([
+                                        RequiredValidator(
+                                            errorText: "Email is required"),
+                                        EmailValidator(
+                                            errorText:
+                                                "Enter a valid email address"),
+                                      ]).call,
+                                    ),
+                                  ),
+                                  CustomTextFormField(
+                                    hintText: "Enter your password..",
+                                    labelText: "Password*",
+                                    isPassword: true,
+                                    controller: passwordController,
                                     validator: MultiValidator([
                                       RequiredValidator(
-                                          errorText: "Email is required"),
-                                      EmailValidator(
+                                          errorText: "Password is required"),
+                                      MinLengthValidator(8,
                                           errorText:
-                                              "Enter a valid email address"),
+                                              'Password must be at least 8 digits long'),
                                     ]).call,
                                   ),
-                                ),
-                                CustomTextFormField(
-                                  hintText: "Enter your password..",
-                                  labelText: "Password*",
-                                  isPassword: true,
-                                  controller: passwordController,
-                                  validator: MultiValidator([
-                                    RequiredValidator(
-                                        errorText: "Password is required"),
-                                    MinLengthValidator(8,
-                                        errorText:
-                                            'Password must be at least 8 digits long'),
-                                  ]).call,
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    CustomTextButton(
-                                      onPressed: () {
-                                        print("Click Forget Password");
-                                      },
-                                      text: "",
-                                    ),
-                                    CustomElevatedButton(
-                                      onPressed: _login,
-                                      text: 'Login',
-                                    )
-                                  ],
-                                ),
-                                const Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [regiesterAccount()],
-                                ),
-                              ],
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      CustomTextButton(
+                                        onPressed: () {
+                                          print("Click Forget Password");
+                                        },
+                                        text: "",
+                                      ),
+                                      CustomElevatedButton(
+                                        onPressed: _login,
+                                        text: 'Login',
+                                      )
+                                    ],
+                                  ),
+                                  const Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [regiesterAccount()],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

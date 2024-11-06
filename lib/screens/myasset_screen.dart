@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:moneymemo_2/screens/form_add_screen.dart';
 import 'package:moneymemo_2/services/asset_services.dart';
 import 'package:moneymemo_2/widgets/text_inter.dart';
 import 'package:moneymemo_2/widgets/text_readexpro.dart';
@@ -36,6 +37,11 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           print("Click add asset");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const TransactionADDScreen()),
+          );
         },
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         elevation: 8,
@@ -286,25 +292,25 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
                                               textSize: 10,
                                               hexcolor: "#000000",
                                             ),
-                                            Row(
-                                              children: [
-                                                const Padding(
-                                                  padding:
-                                                      EdgeInsets.only(right: 4),
-                                                  child: TextInter(
-                                                    title: "Total",
-                                                    textSize: 10,
-                                                    hexcolor: "#000000",
-                                                  ),
-                                                ),
-                                                TextReadexpro(
-                                                  title:
-                                                      "\$${asset.assetAmount.toStringAsFixed(2)}",
-                                                  textSize: 15,
-                                                  hexcolor: "#000000",
-                                                ),
-                                              ],
-                                            ),
+                                            // Row(
+                                            //   children: [
+                                            //     const Padding(
+                                            //       padding:
+                                            //           EdgeInsets.only(right: 4),
+                                            //       child: TextInter(
+                                            //         title: "Total",
+                                            //         textSize: 10,
+                                            //         hexcolor: "#000000",
+                                            //       ),
+                                            //     ),
+                                            //     TextReadexpro(
+                                            //       title:
+                                            //           "\$${asset.assetAmount.toStringAsFixed(2)}",
+                                            //       textSize: 15,
+                                            //       hexcolor: "#000000",
+                                            //     ),
+                                            //   ],
+                                            // ),
                                           ],
                                         ),
                                       ),
