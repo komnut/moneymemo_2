@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:moneymemo_2/screens/form_add_screen.dart';
 import 'package:moneymemo_2/screens/form_edit_screen.dart';
+import 'package:moneymemo_2/screens/login_screen.dart';
 import 'package:moneymemo_2/services/asset_services.dart';
 import 'package:moneymemo_2/widgets/text_inter.dart';
 import 'package:moneymemo_2/widgets/text_readexpro.dart';
@@ -64,8 +66,23 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
             ),
           ),
         ),
-        // centerTitle: false,
-        //elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app), // ไอคอนสำหรับ logout
+            onPressed: () async {
+              // ฟังก์ชันสำหรับ logout
+              await FirebaseAuth.instance.signOut();
+
+              // หลังจาก logout เสร็จแล้วนำทางไปที่หน้าล็อกอิน
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Loginscreen(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
