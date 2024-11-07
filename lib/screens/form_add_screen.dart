@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:moneymemo_2/services/asset_services.dart';
 import 'package:moneymemo_2/widgets/custom_date_picker.dart';
 import 'package:moneymemo_2/widgets/custom_dropdown_button_form_field.dart';
 import 'package:moneymemo_2/widgets/custom_elevated_buttom.dart';
@@ -26,6 +27,9 @@ class _TransactionADDScreenState extends State<TransactionADDScreen> {
   final assetAmountController = TextEditingController();
   final expiredDateController = TextEditingController();
 
+  final FirestoreService _firestoreService =
+      FirestoreService(); // สร้าง instance ของ FirestoreService
+
   // Form field state
   String? selectedAssetType;
 
@@ -42,10 +46,49 @@ class _TransactionADDScreenState extends State<TransactionADDScreen> {
     return null;
   }
 
+  // ฟังก์ชันสำหรับตรวจสอบและบันทึกข้อมูล
   void _submitForm() {
     if (formKey.currentState!.validate()) {
       print("validate completed!!");
-      // registerWithEmailPassword();
+
+      // รับข้อมูลจากฟอร์ม
+      String assetName = assetNameController.text;
+      double assetAmount = double.tryParse(assetAmountController.text) ?? 0.0;
+      String assetType = selectedAssetType ??
+          "asset"; // ใช้ค่าเริ่มต้นเป็น "asset" ถ้าไม่มีการเลือก
+      String? expiredDate = expiredDateController.text.isNotEmpty
+          ? expiredDateController.text
+          : null;
+      DateTime now = DateTime.now();
+
+      // สร้าง object Asset
+      Asset asset = Asset(
+        id: "", // ID จะถูกสร้างโดย Firestore
+        assetName: assetName,
+        assetAmount: assetAmount,
+        assetType: assetType,
+        expiredDate: expiredDate,
+        createdDate: now,
+        updatedDate: now,
+      );
+
+      // บันทึกข้อมูลลง Firestore
+      _firestoreService.addAsset(asset, auth.currentUser!.email!).then((_) {
+        // เมื่อบันทึกเสร็จแล้ว แสดงข้อความ
+        CustomScaffoldMessengerWidget.showCustomSnackBar(
+          context: context,
+          content: "Asset added successfully!",
+          durationInSeconds: 2,
+        );
+        Navigator.pop(context);
+      }).catchError((e) {
+        // หากเกิดข้อผิดพลาด
+        CustomScaffoldMessengerWidget.showCustomSnackBar(
+          context: context,
+          content: "Failed to add asset.",
+          durationInSeconds: 2,
+        );
+      });
     } else {
       CustomScaffoldMessengerWidget.showCustomSnackBar(
         context: context,

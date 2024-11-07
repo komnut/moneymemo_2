@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService {
-  //final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   // ฟังก์ชันดึงข้อมูล asset ของผู้ใช้
   Stream<List<Asset>> getUserAssets(String username) {
-    return FirebaseFirestore.instance
+    return _db
         .collection('user_asset')
         .doc(username)
         .collection('asset')
@@ -14,6 +14,22 @@ class FirestoreService {
         .map((snapshot) => snapshot.docs
             .map((doc) => Asset.fromFirestore(doc.data(), doc.id))
             .toList());
+  }
+
+  // ฟังก์ชันสำหรับบันทึกข้อมูล asset ลง Firestore
+  Future<void> addAsset(Asset asset, String username) async {
+    try {
+      final assetRef = _db
+          .collection('user_asset')
+          .doc(username)
+          .collection('asset')
+          .doc(); // สร้าง document ใหม่ที่มี id อัตโนมัติ
+
+      await assetRef.set(asset.toFirestore()); // บันทึกข้อมูล Asset
+    } catch (e) {
+      print("Error adding asset: $e");
+      throw e; // อาจจะมีการจัดการ error ที่เหมาะสม
+    }
   }
 }
 
