@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:moneymemo_2/screens/form_add_screen.dart';
+import 'package:moneymemo_2/screens/form_edit_screen.dart';
 import 'package:moneymemo_2/services/asset_services.dart';
 import 'package:moneymemo_2/widgets/text_inter.dart';
 import 'package:moneymemo_2/widgets/text_readexpro.dart';
@@ -235,6 +236,14 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
                                 highlightColor: Colors.transparent,
                                 onTap: () {
                                   print("Click edit assets");
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            TransactionEditScreen(
+                                              assetId: asset.id,
+                                            )),
+                                  );
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(

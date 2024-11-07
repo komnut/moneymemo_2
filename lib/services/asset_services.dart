@@ -16,6 +16,30 @@ class FirestoreService {
             .toList());
   }
 
+  // ฟังก์ชันสำหรับดึงข้อมูล asset ตาม id
+  Future<Asset> getAssetById(String assetId, String userEmail) async {
+    try {
+      // ดึงข้อมูลจาก Firestore โดยใช้ assetId และ userEmail
+      DocumentSnapshot snapshot = await _db
+          .collection(
+              'user_asset') // เปลี่ยนชื่อ collection ให้ตรงกับโครงสร้างที่ใช้งาน
+          .doc(userEmail) // ใช้ email เป็น document ID
+          .collection('asset') // collection สำหรับเก็บ assets
+          .doc(assetId) // doc ที่ต้องการดึง
+          .get();
+
+      if (snapshot.exists) {
+        // แปลงข้อมูลจาก Firestore เป็นอ็อบเจ็กต์ Asset
+        return Asset.fromFirestore(
+            snapshot.data() as Map<String, dynamic>, snapshot.id);
+      } else {
+        throw Exception("Asset not found");
+      }
+    } catch (e) {
+      throw Exception("Failed to load asset: $e");
+    }
+  }
+
   // ฟังก์ชันสำหรับบันทึกข้อมูล asset ลง Firestore
   Future<void> addAsset(Asset asset, String username) async {
     try {
@@ -29,6 +53,27 @@ class FirestoreService {
     } catch (e) {
       print("Error adding asset: $e");
       throw e; // อาจจะมีการจัดการ error ที่เหมาะสม
+    }
+  }
+
+  // ฟังก์ชันสำหรับอัปเดตข้อมูล asset
+  Future<void> updateAsset(Asset updatedAsset, String userEmail) async {
+    try {
+      // อัปเดตข้อมูลใน Firestore
+      await _db
+          .collection('user_asset')
+          .doc(userEmail)
+          .collection('asset')
+          .doc(updatedAsset.id) // ใช้ id ของ asset ที่จะอัปเดต
+          .update({
+        'assetName': updatedAsset.assetName,
+        'assetAmount': updatedAsset.assetAmount,
+        'assetType': updatedAsset.assetType,
+        'expiredDate': updatedAsset.expiredDate,
+        'updatedDate': updatedAsset.updatedDate,
+      });
+    } catch (e) {
+      throw Exception("Failed to update asset: $e");
     }
   }
 }
