@@ -4,12 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
+  final Color color;
 
   const CustomElevatedButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.text,
-  }) : super(key: key);
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(150, 50),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+        backgroundColor: color,
         elevation: 3,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),

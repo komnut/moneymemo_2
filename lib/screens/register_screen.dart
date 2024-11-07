@@ -140,6 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           errorText:
                                               "Enter a valid email address"),
                                     ]).call,
+                                    keyboardType: TextInputType.text,
                                   ),
                                 ),
                                 CustomTextFormField(
@@ -154,6 +155,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         errorText:
                                             'Password must be at least 8 digits long'),
                                   ]).call,
+                                  keyboardType: TextInputType.text,
                                 ),
                                 CustomTextFormField(
                                   hintText: "Enter your password..",
@@ -161,6 +163,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   isPassword: true,
                                   controller: confirmPasswordController,
                                   validator: validateConfirmPassword,
+                                  keyboardType: TextInputType.text,
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
@@ -180,6 +183,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     },
                                     text:
                                         'Create Account', // หรือใช้การแปลภาษาที่คุณต้องการ
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                                 const Row(

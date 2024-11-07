@@ -51,24 +51,21 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
           size: 32,
         ),
       ),
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   title: Padding(
-      //     padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-      //     child: Text(
-      //       'My Assets',
-      //       style: GoogleFonts.readexPro(
-      //         textStyle: const TextStyle(
-      //           fontSize: 40,
-      //           color: Colors.black,
-      //           letterSpacing: 0.0,
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      //   centerTitle: false,
-      //   elevation: 0,
-      // ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text(
+          'My Assets',
+          style: GoogleFonts.readexPro(
+            textStyle: const TextStyle(
+              fontSize: 30,
+              color: Colors.black,
+              letterSpacing: 0.0,
+            ),
+          ),
+        ),
+        // centerTitle: false,
+        //elevation: 0,
+      ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -108,13 +105,12 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
               ).format(totalDebtAmount);
 
               return Expanded(
-                child: Column(
-                  children: [
-                    // กล่องสำหรับ Asset
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          0, MediaQuery.sizeOf(context).height * 0.1, 0, 0),
-                      child: Row(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Column(
+                    children: [
+                      // กล่องสำหรับ Asset
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
@@ -222,108 +218,109 @@ class _MyAssetScreenState extends State<MyAssetScreen> {
                           ),
                         ],
                       ),
-                    ),
-                    // แสดงรายการสินทรัพย์
-                    Expanded(
-                      child: ListView.builder(
-                        padding: EdgeInsets.zero,
-                        itemCount: assets.length,
-                        itemBuilder: (context, index) {
-                          Asset asset = assets[index];
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () {
-                                print("Click edit assets");
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: asset.assetType == 'asset'
-                                      ? Theme.of(context)
-                                          .colorScheme
-                                          .tertiaryContainer
-                                      : Theme.of(context)
-                                          .colorScheme
-                                          .errorContainer,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          TextInter(
-                                            title: asset.assetName,
-                                            textSize: 10,
-                                            hexcolor: "#000000",
-                                          ),
-                                          const Icon(
-                                            Icons.arrow_forward_ios_rounded,
-                                            color: Colors.black,
-                                            size: 16,
-                                          ),
-                                        ],
-                                      ),
-                                      TextReadexpro(
-                                        title: NumberFormat("#,##0.00")
-                                            .format(asset.assetAmount),
-                                        textSize: 15,
-                                        hexcolor: "#000000",
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 4),
-                                        child: Row(
+                      // แสดงรายการสินทรัพย์
+                      Expanded(
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: assets.length,
+                          itemBuilder: (context, index) {
+                            Asset asset = assets[index];
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () {
+                                  print("Click edit assets");
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: asset.assetType == 'asset'
+                                        ? Theme.of(context)
+                                            .colorScheme
+                                            .tertiaryContainer
+                                        : Theme.of(context)
+                                            .colorScheme
+                                            .errorContainer,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             TextInter(
-                                              title:
-                                                  "Expires on ${asset.expiredDate ?? "N/A"}",
+                                              title: asset.assetName,
                                               textSize: 10,
                                               hexcolor: "#000000",
                                             ),
-                                            // Row(
-                                            //   children: [
-                                            //     const Padding(
-                                            //       padding:
-                                            //           EdgeInsets.only(right: 4),
-                                            //       child: TextInter(
-                                            //         title: "Total",
-                                            //         textSize: 10,
-                                            //         hexcolor: "#000000",
-                                            //       ),
-                                            //     ),
-                                            //     TextReadexpro(
-                                            //       title:
-                                            //           "\$${asset.assetAmount.toStringAsFixed(2)}",
-                                            //       textSize: 15,
-                                            //       hexcolor: "#000000",
-                                            //     ),
-                                            //   ],
-                                            // ),
+                                            const Icon(
+                                              Icons.arrow_forward_ios_rounded,
+                                              color: Colors.black,
+                                              size: 16,
+                                            ),
                                           ],
                                         ),
-                                      ),
-                                    ],
+                                        TextReadexpro(
+                                          title: NumberFormat("#,##0.00")
+                                              .format(asset.assetAmount),
+                                          textSize: 15,
+                                          hexcolor: "#000000",
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 4),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              TextInter(
+                                                title:
+                                                    "Expires on ${asset.expiredDate ?? "N/A"}",
+                                                textSize: 10,
+                                                hexcolor: "#000000",
+                                              ),
+                                              // Row(
+                                              //   children: [
+                                              //     const Padding(
+                                              //       padding:
+                                              //           EdgeInsets.only(right: 4),
+                                              //       child: TextInter(
+                                              //         title: "Total",
+                                              //         textSize: 10,
+                                              //         hexcolor: "#000000",
+                                              //       ),
+                                              //     ),
+                                              //     TextReadexpro(
+                                              //       title:
+                                              //           "\$${asset.assetAmount.toStringAsFixed(2)}",
+                                              //       textSize: 15,
+                                              //       hexcolor: "#000000",
+                                              //     ),
+                                              //   ],
+                                              // ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },

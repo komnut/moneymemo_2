@@ -151,6 +151,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                             errorText:
                                                 "Enter a valid email address"),
                                       ]).call,
+                                      keyboardType: TextInputType.text,
                                     ),
                                   ),
                                   CustomTextFormField(
@@ -165,6 +166,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                           errorText:
                                               'Password must be at least 8 digits long'),
                                     ]).call,
+                                    keyboardType: TextInputType.text,
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -180,6 +182,9 @@ class _LoginscreenState extends State<Loginscreen> {
                                       CustomElevatedButton(
                                         onPressed: _login,
                                         text: 'Login',
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
                                       )
                                     ],
                                   ),
