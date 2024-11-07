@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:moneymemo_2/widgets/custom_date_picker.dart';
 import 'package:moneymemo_2/widgets/custom_dropdown_button_form_field.dart';
 import 'package:moneymemo_2/widgets/custom_elevated_buttom.dart';
 import 'package:moneymemo_2/widgets/custom_text_form_field.dart';
@@ -98,14 +99,10 @@ class _TransactionADDScreenState extends State<TransactionADDScreen> {
                               CustomTextFormField(
                                 hintText: "Amount..",
                                 labelText: "Amonut",
-                                isPassword: true,
                                 controller: assetAmountController,
                                 validator: MultiValidator([
                                   RequiredValidator(
                                       errorText: "Amonut is required"),
-                                  // MinLengthValidator(8,
-                                  //     errorText:
-                                  //         'Password must be at least 8 digits long'),
                                 ]).call,
                               ),
                               CustomDropdownButtonFormField(
@@ -125,13 +122,19 @@ class _TransactionADDScreenState extends State<TransactionADDScreen> {
                                   return null;
                                 },
                               ),
-                              CustomTextFormField(
+                              // CustomTextFormField(
+                              //   hintText: "Expired date..",
+                              //   labelText: "Expired Date",
+                              //   controller: expiredDateController,
+                              //   validator: validateExpiredDate,
+                              // ),
+                              ExpiredDatePicker(
                                 hintText: "Expired date..",
                                 labelText: "Expired Date",
-                                isPassword: true,
                                 controller: expiredDateController,
                                 validator: validateExpiredDate,
                               ),
+
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0, 24, 0, 24),
