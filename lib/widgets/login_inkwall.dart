@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:moneymemo_2/screens/register_screen.dart';
 import 'package:moneymemo_2/widgets/text_inter.dart';
 
-class regiesterAccount extends StatelessWidget {
-  const regiesterAccount({super.key});
+class RegiesterAccount extends StatelessWidget {
+  const RegiesterAccount({super.key});
 
   @override
   Widget build(BuildContext context) {

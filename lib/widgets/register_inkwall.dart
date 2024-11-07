@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:moneymemo_2/screens/login_screen.dart';
 
-class alreadyAccount extends StatelessWidget {
-  const alreadyAccount({super.key});
+class AlreadyAccount extends StatelessWidget {
+  const AlreadyAccount({super.key});
 
   @override
   Widget build(BuildContext context) {

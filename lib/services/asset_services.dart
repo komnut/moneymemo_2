@@ -52,7 +52,7 @@ class FirestoreService {
       await assetRef.set(asset.toFirestore()); // บันทึกข้อมูล Asset
     } catch (e) {
       print("Error adding asset: $e");
-      throw e; // อาจจะมีการจัดการ error ที่เหมาะสม
+      rethrow; // อาจจะมีการจัดการ error ที่เหมาะสม
     }
   }
 

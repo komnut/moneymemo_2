@@ -7,7 +7,6 @@ import 'package:moneymemo_2/screens/myasset_screen.dart';
 import 'package:moneymemo_2/services/auth_service.dart'; // Import the AuthService
 import 'package:moneymemo_2/widgets/custom_elevated_buttom.dart';
 import 'package:moneymemo_2/widgets/custom_text_form_field.dart';
-import 'package:moneymemo_2/widgets/customer_text_button.dart';
 import 'package:moneymemo_2/widgets/login_inkwall.dart';
 import 'package:moneymemo_2/widgets/logo_image.dart';
 import 'package:moneymemo_2/widgets/text_readexpro.dart';
@@ -94,7 +93,7 @@ class _LoginscreenState extends State<Loginscreen> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: [logoImage()],
+                            children: [LogoImage()],
                           ),
                         ),
                         Padding(
@@ -194,7 +193,7 @@ class _LoginscreenState extends State<Loginscreen> {
                                   const Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [regiesterAccount()],
+                                    children: [RegiesterAccount()],
                                   ),
                                 ],
                               ),

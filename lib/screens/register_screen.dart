@@ -78,7 +78,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            logoImage(),
+                            LogoImage(),
                           ],
                         ),
                       ),
@@ -190,7 +190,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 const Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [alreadyAccount()],
+                                  children: [AlreadyAccount()],
                                 ),
                               ],
                             ),
