@@ -170,21 +170,24 @@ class _LoginscreenState extends State<Loginscreen> {
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      CustomTextButton(
-                                        onPressed: () {
-                                          print("Click Forget Password");
-                                        },
-                                        text: "",
-                                      ),
-                                      CustomElevatedButton(
-                                        onPressed: _login,
-                                        text: 'Login',
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                      // CustomTextButton(
+                                      //   onPressed: () {
+                                      //     print("Click Forget Password");
+                                      //   },
+                                      //   text: "",
+                                      // ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 24, 0, 24),
+                                        child: CustomElevatedButton(
+                                          onPressed: _login,
+                                          text: 'Login',
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
                                       )
                                     ],
                                   ),
