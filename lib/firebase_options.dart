@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -64,5 +61,15 @@ class DefaultFirebaseOptions {
     projectId: 'moneymemo-b6770',
     storageBucket: 'moneymemo-b6770.firebasestorage.app',
     iosBundleId: 'com.example.moneymemo2',
+  );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyA7JOa9A4qz_REMOO5xTNqGXkPXmVCse2Q',
+    appId: '1:656378444249:web:3c8bbb50ad3040fede01c8',
+    messagingSenderId: '656378444249',
+    projectId: 'moneymemo-b6770',
+    authDomain: 'moneymemo-b6770.firebaseapp.com',
+    storageBucket: 'moneymemo-b6770.firebasestorage.app',
+    measurementId: 'G-BTSFGZCSHH',
   );
 }

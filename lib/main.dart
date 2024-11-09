@@ -1,11 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:moneymemo_2/firebase_options.dart';
 import 'package:moneymemo_2/screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding
       .ensureInitialized(); // ต้องทำให้เรียบร้อยก่อนใช้ Firebase
-  await Firebase.initializeApp(); // เรียกใช้ Firebase.initializeApp()
+  // await Firebase.initializeApp(); // เรียกใช้ Firebase.initializeApp()
+
+  // เริ่มต้น Firebase ด้วย FirebaseOptions
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
