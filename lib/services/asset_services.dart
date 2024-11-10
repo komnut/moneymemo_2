@@ -76,6 +76,22 @@ class FirestoreService {
       throw Exception("Failed to update asset: $e");
     }
   }
+
+  // ฟังก์ชันสำหรับลบข้อมูล asset
+  Future<void> deleteAsset(String assetId, String userEmail) async {
+    try {
+      // ลบข้อมูลใน Firestore
+      await _db
+          .collection('user_asset')
+          .doc(userEmail)
+          .collection('asset')
+          .doc(assetId) // ใช้ id ของ asset ที่จะลบ
+          .delete();
+      print("Asset deleted successfully");
+    } catch (e) {
+      throw Exception("Failed to delete asset: $e");
+    }
+  }
 }
 
 class Asset {

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:moneymemo_2/screens/myasset_screen.dart';
 import 'package:moneymemo_2/services/asset_services.dart';
 import 'package:moneymemo_2/widgets/custom_date_picker.dart';
 import 'package:moneymemo_2/widgets/custom_dropdown_button_form_field.dart';
@@ -195,6 +196,43 @@ class _TransactionEditScreenState extends State<TransactionEditScreen> {
           style: GoogleFonts.readexPro(fontSize: 30, color: Colors.black),
         ),
         centerTitle: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () async {
+              print("click delete button");
+
+              try {
+                final user = FirebaseAuth.instance.currentUser;
+                if (user != null) {
+                  // ลบ asset ที่ระบุโดยใช้ฟังก์ชัน deleteAsset
+                  // โดยคุณสามารถระบุ assetId ที่ต้องการลบได้
+                  String assetId =
+                      widget.assetId; // เปลี่ยนเป็น assetId ที่ต้องการ
+                  await _firestoreService.deleteAsset(
+                      assetId, user.email ?? "");
+
+                  print("Asset deleted successfully");
+
+                  // เปลี่ยนหน้าไปยัง MyAssetScreen หลังจากลบ asset สำเร็จ
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyAssetScreen(
+                        username: user.email ?? "",
+                      ),
+                    ),
+                  );
+                } else {
+                  print("No user is signed in");
+                }
+              } catch (e) {
+                print("Error deleting asset: $e");
+                // สามารถแสดง dialog หรือ Snackbar เพื่อแจ้งข้อผิดพลาดให้กับผู้ใช้ได้
+              }
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
